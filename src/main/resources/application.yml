@@ -1,4 +1,6 @@
-server.port: 8080
+server:
+  port: 8080
+  servlet.context-path: /api/v1
 spring:
   h2.console.enabled: true
   datasource:
