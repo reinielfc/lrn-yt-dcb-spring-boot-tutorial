@@ -10,20 +10,25 @@ import java.util.List;
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 
-    private final DepartmentRepository repository;
+    private final DepartmentRepository departmentRepository;
 
     @Autowired
-    public DepartmentServiceImpl(DepartmentRepository repository) {
-        this.repository = repository;
+    public DepartmentServiceImpl(DepartmentRepository departmentRepository) {
+        this.departmentRepository = departmentRepository;
     }
 
     @Override
     public Department saveDepartment(Department department) {
-        return repository.save(department);
+        return departmentRepository.save(department);
     }
 
     @Override
     public List<Department> fetchDepartmentList() {
-        return repository.findAll();
+        return departmentRepository.findAll();
+    }
+
+    @Override
+    public Department fetchDepartmentById(Long id) {
+        return departmentRepository.findById(id).get();
     }
 }
