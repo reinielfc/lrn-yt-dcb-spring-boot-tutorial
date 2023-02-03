@@ -10,4 +10,6 @@ public interface DepartmentService {
     List<Department> fetchDepartmentList();
 
     Department fetchDepartmentById(Long id);
+
+    void deleteDepartmentById(Long id);
 }
