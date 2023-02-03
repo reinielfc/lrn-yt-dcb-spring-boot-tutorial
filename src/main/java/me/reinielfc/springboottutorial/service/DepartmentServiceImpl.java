@@ -1,6 +1,7 @@
 package me.reinielfc.springboottutorial.service;
 
 import me.reinielfc.springboottutorial.entity.Department;
+import me.reinielfc.springboottutorial.error.DepartmentNotFoundException;
 import me.reinielfc.springboottutorial.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +29,8 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department fetchDepartmentById(Long id) {
-        return departmentRepository.findById(id).get();
+    public Department fetchDepartmentById(Long id) throws DepartmentNotFoundException {
+        return departmentRepository.findById(id).orElseThrow(() -> new DepartmentNotFoundException("Department not found!"));
     }
 
     @Override
@@ -43,7 +44,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department updateDepartmentById(Long id, Department update) {
+    public Department updateDepartmentById(Long id, Department update) throws DepartmentNotFoundException {
         Department department = fetchDepartmentById(id);
 
         department.setName(update.getName());

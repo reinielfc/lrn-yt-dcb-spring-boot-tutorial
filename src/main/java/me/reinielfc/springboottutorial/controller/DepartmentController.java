@@ -2,6 +2,7 @@ package me.reinielfc.springboottutorial.controller;
 
 import jakarta.validation.Valid;
 import me.reinielfc.springboottutorial.entity.Department;
+import me.reinielfc.springboottutorial.error.DepartmentNotFoundException;
 import me.reinielfc.springboottutorial.service.DepartmentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +35,7 @@ public class DepartmentController {
     }
 
     @GetMapping("{id}")
-    public Department fetchDepartmentById(@PathVariable Long id) {
+    public Department fetchDepartmentById(@PathVariable Long id) throws DepartmentNotFoundException {
         return service.fetchDepartmentById(id);
     }
 
@@ -48,7 +49,7 @@ public class DepartmentController {
     }
 
     @PutMapping("{id}")
-    public Department updateDepartmentById(@PathVariable Long id, @RequestBody @Valid Department update) {
+    public Department updateDepartmentById(@PathVariable Long id, @RequestBody @Valid Department update) throws DepartmentNotFoundException {
         return service.updateDepartmentById(id, update);
     }
 
