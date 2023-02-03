@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@Data @Builder @NoArgsConstructor @AllArgsConstructor
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class Department {
 
     @Id
