@@ -33,7 +33,19 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    public Department updateDepartmentById(Long id, Department update) {
+        Department department = fetchDepartmentById(id);
+
+        department.setName(update.getName());
+        department.setAddress(update.getAddress());
+        department.setCode(update.getCode());
+
+        return departmentRepository.save(department);
+    }
+
+    @Override
     public void deleteDepartmentById(Long id) {
         departmentRepository.deleteById(id);
     }
+
 }
