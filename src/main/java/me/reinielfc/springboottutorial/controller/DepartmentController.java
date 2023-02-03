@@ -3,6 +3,8 @@ package me.reinielfc.springboottutorial.controller;
 import jakarta.validation.Valid;
 import me.reinielfc.springboottutorial.entity.Department;
 import me.reinielfc.springboottutorial.service.DepartmentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,7 @@ import java.util.List;
 public class DepartmentController {
 
     private final DepartmentService service;
+    private final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
 
     @Autowired
     public DepartmentController(DepartmentService service) {
@@ -21,6 +24,7 @@ public class DepartmentController {
 
     @PostMapping
     public Department saveDepartment(@RequestBody @Valid Department department) {
+        LOGGER.info("Saving department {}:", department);
         return service.saveDepartment(department);
     }
 
