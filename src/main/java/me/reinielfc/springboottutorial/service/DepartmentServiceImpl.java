@@ -33,6 +33,16 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    public Department fetchDepartmentByName(String name) {
+        return departmentRepository.findByName(name);
+    }
+
+    @Override
+    public Department fetchDepartmentByNameIgnoreCase(String name) {
+        return departmentRepository.findByNameIgnoreCase(name);
+    }
+
+    @Override
     public Department updateDepartmentById(Long id, Department update) {
         Department department = fetchDepartmentById(id);
 

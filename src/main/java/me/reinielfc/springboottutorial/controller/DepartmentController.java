@@ -33,6 +33,15 @@ public class DepartmentController {
         return service.fetchDepartmentById(id);
     }
 
+    @GetMapping("name/{name}")
+    public Department fetchDepartmentByName(
+            @PathVariable String name,
+            @RequestParam(required = false, defaultValue = "false") Boolean ignoreCase) {
+        return ignoreCase
+                ? service.fetchDepartmentByNameIgnoreCase(name)
+                : service.fetchDepartmentByName(name);
+    }
+
     @PutMapping("{id}")
     public Department updateDepartmentById(@PathVariable Long id, @RequestBody Department update) {
         return service.updateDepartmentById(id, update);

@@ -11,6 +11,10 @@ public interface DepartmentService {
 
     Department fetchDepartmentById(Long id);
 
+    Department fetchDepartmentByName(String name);
+
+    Department fetchDepartmentByNameIgnoreCase(String name);
+
     Department updateDepartmentById(Long id, Department update);
 
     void deleteDepartmentById(Long id);
