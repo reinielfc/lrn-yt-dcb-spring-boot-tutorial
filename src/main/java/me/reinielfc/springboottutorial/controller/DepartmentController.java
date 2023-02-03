@@ -1,5 +1,6 @@
 package me.reinielfc.springboottutorial.controller;
 
+import jakarta.validation.Valid;
 import me.reinielfc.springboottutorial.entity.Department;
 import me.reinielfc.springboottutorial.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class DepartmentController {
     }
 
     @PostMapping
-    public Department saveDepartment(@RequestBody Department department) {
+    public Department saveDepartment(@RequestBody @Valid Department department) {
         return service.saveDepartment(department);
     }
 
@@ -43,7 +44,7 @@ public class DepartmentController {
     }
 
     @PutMapping("{id}")
-    public Department updateDepartmentById(@PathVariable Long id, @RequestBody Department update) {
+    public Department updateDepartmentById(@PathVariable Long id, @RequestBody @Valid Department update) {
         return service.updateDepartmentById(id, update);
     }
 
